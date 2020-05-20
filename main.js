@@ -30,7 +30,7 @@ var eventHandlers = {
      */
 
     onNewOutage: function (service, outage) {
-        var errorMsg = service.name + ' down!' + '. Error: ' + outage.error;
+        var errorMsg = service.name + ' down! (' + outage.error + ')';
         sendMessage(errorMsg);
     },
 
@@ -44,7 +44,7 @@ var eventHandlers = {
      */
 
     onServiceBack: function (service, lastOutage) {
-        var duration = moment.duration(+new Date() - lastOutage.timestamp, 'seconds');
+        var duration = moment.duration(+new Date() - lastOutage.timestamp);
         var msg = service.name + ' is back' + '. Down for ' + duration.humanize();
         sendMessage(msg);
     },
